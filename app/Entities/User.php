@@ -2,24 +2,44 @@
 
 namespace App\Entities;
 
-use Illuminate\Database\Eloquent\Model;
-use Prettus\Repository\Contracts\Transformable;
-use Prettus\Repository\Traits\TransformableTrait;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-/**
- * Class User.
- *
- * @package namespace App\Entities;
- */
-class User extends Model implements Transformable
+class User extends Authenticatable
 {
-    use TransformableTrait;
+    use SoftDeletes;
+    use Notifiable;
+
+    public  $timestamps = true;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = [];
+
+    protected $table = 'users';
+
+    protected $fillable = [
+        'name',
+        'cpf',
+        'eddress',
+        'phone',
+        'password',
+        'email',
+
+    ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+
+        'password',
+        'remember_token',
+    ];
 
 }
