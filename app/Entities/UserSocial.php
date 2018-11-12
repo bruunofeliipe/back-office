@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Entities;
+namespace App;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class UserSocial extends Model
 {
     use SoftDeletes;
     use Notifiable;
@@ -22,12 +22,11 @@ class User extends Authenticatable
     protected $table = 'users';
 
     protected $fillable = [
-        'name',
-        'cpf',
-        'eddress',
-        'phone',
-        'password',
-        'email',
+        'user_id',
+        'social_network',
+        'social_id',
+        'social_email',
+        'social_avatar'
 
     ];
 
@@ -36,10 +35,6 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $hidden = [
-
-        'password',
-        'remember_token',
-    ];
+    protected $hidden = [];
 
 }

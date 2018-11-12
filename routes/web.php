@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/login',['uses' => 'Controller@fazerLogin']);
+Route::post('/login',['as'=>'user.login','uses' => 'DashboardController@auth']);
+Route::post('/dashboard',['as'=>'user.login','uses' => 'DashboardController@index']);

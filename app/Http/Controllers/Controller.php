@@ -10,4 +10,12 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    /**
+     * method de usuário logar.
+     */
+    public function fazerLogin()
+    {
+        return view('user.login');
+    }
 }
